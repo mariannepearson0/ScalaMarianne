@@ -3,8 +3,11 @@ object Main extends App {
   //val chat = new ChatBot
   //chat.playChatBot
 
-  val matrix = new Matrix
+  //val matrix = new Matrix
   //matrix.printRandoms
-  matrix.printRandomsRec()
+  //matrix.printRandomsRec()
+
+  val brokeKey = new BrokenKeyboard
+  brokeKey.longestWord
 
 }

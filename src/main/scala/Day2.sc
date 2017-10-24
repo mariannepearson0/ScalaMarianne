@@ -1,3 +1,5 @@
+import scala.io.Source
+
 //PATTERN MATCHING 1
 def booleanMathPattern(int1:Int, int2:Int, bool:Boolean) = {
   val tup = new Tuple3(int1, int2, bool)
@@ -67,3 +69,12 @@ val fruitList = List("Apple", "Raspberry", "Lemon", "Kiwi", "Strawberry")
 var bigFruit = ""
 fruitList foreach (fruit => if (fruit.length > bigFruit.length) bigFruit = fruit)
 println(bigFruit)
+
+val fileName = "C:\\Users\\marianne\\IdeaProjects\\Scala_Marianne\\src\\main\\scala\\brokenKeyboardInput.txt"
+
+val lines = Source.fromFile(fileName).getLines()
+var linesList = lines.toList
+
+val listOfLines = Source.fromFile(fileName).getLines().toList
+listOfLines(1)
+linesList(1)
