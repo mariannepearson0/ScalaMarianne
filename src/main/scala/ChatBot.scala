@@ -6,10 +6,9 @@ class ChatBot {
   def playChatBot = {
 
     while (open == true) {
-      val rand = scala.util.Random
       val userInput = scala.io.StdIn.readLine()
       if (userInput.endsWith("?")) {
-        val numb = rand.nextInt(2)
+        val numb = scala.util.Random.nextInt(2)
         if (numb == 0) println("I don't know, let me google that for you!")
         else if (numb == 1) println("I don't know, and I'm too lazy to look it up!")
       }
