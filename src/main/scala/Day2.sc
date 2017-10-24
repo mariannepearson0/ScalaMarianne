@@ -69,12 +69,3 @@ val fruitList = List("Apple", "Raspberry", "Lemon", "Kiwi", "Strawberry")
 var bigFruit = ""
 fruitList foreach (fruit => if (fruit.length > bigFruit.length) bigFruit = fruit)
 println(bigFruit)
-
-val fileName = "C:\\Users\\marianne\\IdeaProjects\\Scala_Marianne\\src\\main\\scala\\brokenKeyboardInput.txt"
-
-val lines = Source.fromFile(fileName).getLines()
-var linesList = lines.toList
-
-val listOfLines = Source.fromFile(fileName).getLines().toList
-listOfLines(1)
-linesList(1)
