@@ -47,8 +47,7 @@ println(endString("Hello",3))
 
 //STRINGS 2
 def replaceString(start:String, end:String, toReplace:Char, replaceBy:Char) = {
-  val concatString = start + end
-  concatString.replace(toReplace, replaceBy)
+  (s"$start$end").replace(toReplace, replaceBy)
 }
 
 println(replaceString("Ha", "llo", 'a', 'e'))
