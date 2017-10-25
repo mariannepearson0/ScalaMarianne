@@ -2,8 +2,7 @@ import scala.io.Source
 
 //PATTERN MATCHING 1
 def booleanMathPattern(int1:Int, int2:Int, bool:Boolean) = {
-  val tup = new Tuple3(int1, int2, bool)
-  tup match {
+  (int1, int2, bool) match {
     case (_,_,true) => int1+int2
     case (_) => int1*int2
   }
@@ -13,8 +12,7 @@ booleanMathPattern(5,7,false)
 
 //PATTERN MATCHING 1
 def whatIfZeroPattern(int1:Int, int2:Int) = {
-  val numList: List[Int] = List(int1, int2)
-  numList match {
+  List(int1, int2) match {
     case x::xs if int1 == 0 => int2
     case x::xs if int2 == 0 => int1
     case x::xs if int1 == 0 && int2 == 0 => 0
