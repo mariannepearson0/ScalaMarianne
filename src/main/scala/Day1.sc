@@ -88,13 +88,6 @@ def booleanMath(int1: Int, int2: Int, bool: Boolean) = {
 booleanMath(30, 4, true)
 booleanMath(30, 4, false)
 
-//CONDITIONALS PATTERN
-def booleanMathPattern(int1: Int, int2: Int, bool: Boolean)= {
-  match {
-    case 1 =>
-  }
-}
-
 //CONDITIONALS 2
 def whatIfZero(int1: Int, int2: Int) = {
   if (int1 == 0) int2
