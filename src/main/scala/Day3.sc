@@ -34,17 +34,13 @@ var alphabet = "abcdefghijklmnopqrstuvwxyz"
 var alphabetArray = alphabet.toCharArray
 
 def cipher(input:String) = {
-  var inputArray = input.toCharArray()
-  for(letter <- inputArray){
-    print(alphabetArray(alphabetArray.length - alphabetArray.indexOf(letter)-1))
-  }
+  for(letter <- input.toCharArray()) print(alphabetArray(alphabetArray.length - alphabetArray.indexOf(letter)-1))
 }
 
 cipher("foobar")
 
 //FUNCTIONAL 3
-def gcd(int1:Int, int2:Int): Integer =
-  if(int2 == 0) int1 else gcd(int2, int1%int2)
+def gcd(int1:Int, int2:Int): Integer = if(int2 == 0) int1 else gcd(int2, int1%int2)
 
 gcd(12,6)
 
@@ -98,18 +94,18 @@ applyDiscountsCurried(1)(150.0)(applyDiscounts)
 def blackjack(first:Int, second:Int) = {
   if(first == 0 || second == 0) println("Invalid")
   else if(first>21 && second>21) 0
+  else if(first>21) second
+  else if(second>21) first
   else if(21-first < 21-second) first
   else if(21-first > 21-second) second
 }
 
-blackjack(20,21)
+blackjack(20,17)
 
 //UNIQUE SUM
 def uniqueSum(first:Int, second:Int, third:Int) = {
-  var sum=0
   val sumSet = Set(first,second,third)
-  sumSet.map(sum += _)
-  sum
+  sumSet.sum
 }
 
 uniqueSum(1,5,7)
