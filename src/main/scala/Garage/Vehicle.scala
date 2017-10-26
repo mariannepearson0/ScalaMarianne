@@ -1,6 +1,6 @@
 package Garage
 
-class Vehicle(regNo:Int, faults:Int) {
-
-  override def toString
+abstract class Vehicle {
+  val regNo:String
+  var faults:Map[String,Int]
 }

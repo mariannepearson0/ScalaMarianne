@@ -1,8 +1,11 @@
 package Garage
 
-class Car(regNo:Int, faults:Int, make:String) extends Vehicle(regNo, faults) {
+case class Car(carRegNo:String, carFaults:Map[String,Int], carMake:String) extends Vehicle {
 
-  override def toString = {
-    s"The car registration number is $regNo, the make of the car is $make there are $faults faults"
+  val regNo:String = carRegNo
+  var faults:Map[String,Int] = carFaults
+
+  override def toString: String = {
+    s"Registration Number: $regNo\nCar Make: $carMake\nNumber of Faults: $faults"
   }
 }
