@@ -30,11 +30,11 @@ def isAFactorial(number:Int, counter:Int = 1): Any= {
 isAFactorial(3628800)
 
 //CIPHER
-var alphabet = "abcdefghijklmnopqrstuvwxyz"
-var alphabetArray = alphabet.toCharArray
+val alphabet = "abcdefghijklmnopqrstuvwxyz"
+val alphabetArray = alphabet.toCharArray
 
 def cipher(input:String) = {
-  for(letter <- input.toCharArray()) print(alphabetArray(alphabetArray.length - alphabetArray.indexOf(letter)-1))
+  for(letter <- input.toCharArray) print(alphabetArray(alphabetArray.length - alphabetArray.indexOf(letter)-1))
 }
 
 cipher("foobar")
