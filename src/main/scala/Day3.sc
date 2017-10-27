@@ -1,7 +1,5 @@
 //FUNCTIONAL 1
-val countryCapital = java.util.TimeZone.getAvailableIDs()
-
-countryCapital.map(_.split('/').toList.drop(1).mkString).filter(_.length>1)
+java.util.TimeZone.getAvailableIDs().map(_.split('/').toList.drop(1).mkString).filter(_.length>1)
 
 //FUNCTIONAL 2
 def fibonacci(intList: List[Int]):Boolean = {
@@ -30,11 +28,10 @@ def isAFactorial(number:Int, counter:Int = 1): Any= {
 isAFactorial(3628800)
 
 //CIPHER
-var alphabet = "abcdefghijklmnopqrstuvwxyz"
-var alphabetArray = alphabet.toCharArray
+val alphabetArray = ('a' to 'z').toArray
 
 def cipher(input:String) = {
-  for(letter <- input.toCharArray()) print(alphabetArray(alphabetArray.length - alphabetArray.indexOf(letter)-1))
+  for(letter <- input.toCharArray) print(alphabetArray(alphabetArray.length - alphabetArray.indexOf(letter)-1))
 }
 
 cipher("foobar")
@@ -75,37 +72,35 @@ isInString2((str1:String,str2:String) => if(str2.contains(str1)) s"Yes indeed, $
 
 //FUNCTIONAL 8
 def applyDiscounts(amount:Double): Double = {
-  var total:Double = amount
-  if(amount > 100) total -= total*0.1
-  total += total*0.2
-  total
+  if(amount > 100) amount*0.9
+  else amount*0.8
 }
 applyDiscounts(150)
 
 //FUNCTIONAL 9
 def applyDiscountsCurried(quantity:Integer)(price:Double)(discount:Double => Double) = {
-  val total = quantity*price
-  discount(total)
+  discount(quantity*price)
 }
 
 applyDiscountsCurried(1)(150.0)(applyDiscounts)
 
 //BLACKJACK
 def blackjack(first:Int, second:Int) = {
-  if(first == 0 || second == 0) println("Invalid")
-  else if(first>21 && second>21) 0
-  else if(first>21) second
-  else if(second>21) first
-  else if(21-first < 21-second) first
-  else if(21-first > 21-second) second
+  (first,second) match {
+  case (0,0) => println("Invalid")
+  case (_,_) if first>21 && second>21 => 0
+  case (_,_) if (first > 21) => second
+  case (_,_) if (second > 21) => first
+  case (_,_) if (21 - first < 21 - second) => first
+  case (_,_) if (21 - first > 21 - second)=> second
+  }
 }
 
 blackjack(20,17)
 
 //UNIQUE SUM
 def uniqueSum(first:Int, second:Int, third:Int) = {
-  val sumSet = Set(first,second,third)
-  sumSet.sum
+  Set(first,second,third).sum
 }
 
 uniqueSum(1,5,7)
