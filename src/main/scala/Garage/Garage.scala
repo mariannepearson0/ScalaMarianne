@@ -51,22 +51,21 @@ class Garage {
                 employee.active = true
                 employee.regWork = registration
                 val startTime = Calendar.getInstance.get(Calendar.HOUR_OF_DAY)
-                //if(Calendar.getInstance.get(Calendar.HOUR_OF_DAY) == startTime*vehicle.faults){
-                // vehicle.faults = 0
+                //if (Calendar.getInstance.get(Calendar.HOUR_OF_DAY) == startTime * vehicle.faults) {
+                //vehicle.faults = 0
                 println(s"The vehicle is fixed")
                 employee.active = false
                 employee.regWork = ""
               }
-
               else println("No employees are available")
               break
             }
           }
-
-
-          case _ => "Vehicle is not in garage"
         }
-      }
+
+          //case _ => "Vehicle is not in garage"
+        }
+
     }
 
     def calculateBill(registration:String) = {
@@ -76,8 +75,7 @@ class Garage {
         registration match {
           case vehicle.regNo => {
             val cust = keyForValue(vehicle).name
-            if()
-            bill = vehicle.faults * 20
+            //bill = vehicle.faults * 20
             println(s"The bill for $cust comes to £$bill")
           }
           case _ => "Vehicle is not in garage"

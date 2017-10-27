@@ -1,6 +1,6 @@
 package Garage
 
-class Part {
+abstract class Part {
 
   def Engine:String
 
