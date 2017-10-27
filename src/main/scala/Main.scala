@@ -4,7 +4,8 @@ object Main extends App {
   //brokeKey.longestWord
   //val hangman = new Hangman
   //hangman.playHangman
-  val lumber = new Lumberjack
-  lumber.placeLogs()
-
+  //val lumber = new Lumberjack
+  //lumber.placeLogs()
+  val tetra = new Tetrahedral
+  println(tetra.isATetrahedral(14190))
 }
