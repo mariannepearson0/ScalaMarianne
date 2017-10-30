@@ -41,31 +41,29 @@ class Garage {
 
     def fixVehicle(registration:String) = {
       val allVehicles = customerMap.values
-      for(vehicle <- allVehicles) {
+      var timeToFix = 0
+      for (vehicle <- allVehicles) {
         registration match {
           case vehicle.regNo => {
             val cust = keyForValue(vehicle).name
             println(s"The vehicle for $cust is being fixed.")
-            for (employee <- employeeList) {
-              if (employee.active == false) {
-                employee.active = true
-                employee.regWork = registration
-                val startTime = Calendar.getInstance.get(Calendar.HOUR_OF_DAY)
-                //if (Calendar.getInstance.get(Calendar.HOUR_OF_DAY) == startTime * vehicle.faults) {
-                //vehicle.faults = 0
-                println(s"The vehicle is fixed")
-                employee.active = false
-                employee.regWork = ""
+            for (part <- vehicle.parts if (part.broken == true)) {
+              part.partType match {
+                case "tyre" => timeToFix += 0.5
+                case "windscreen" => timeToFix += 0.75
+                case "bumper" => timeToFix += 0.25
+                case "boot" => timeToFix += 1
+                case "windscreen wipers" => timeToFix += 0.4
+                case "engine" => timeToFix += 3
+                case "flux capacitor" => timeToFix += 10
+                case _ => 0
               }
-              else println("No employees are available")
-              break
             }
           }
+          case _ => "Vehicle is not in garage"
         }
-
-          //case _ => "Vehicle is not in garage"
-        }
-
+      }
+      println(s"Time to fix vehicle: $timeToFix")
     }
 
     def calculateBill(registration:String) = {
@@ -75,7 +73,7 @@ class Garage {
         registration match {
           case vehicle.regNo => {
             val custName = keyForValue(vehicle).name
-            bill = vehicle.faults * 20
+            //bill = vehicle.faults * 20
             println(s"The bill for $custName comes to £$bill")
           }
           case _ => "Vehicle is not in garage"
@@ -100,3 +98,12 @@ class Garage {
       garageIsOpen = false
     }
 }
+//for (employee <- employeeList) {
+//if (employee.active == false) {
+//employee.active = true
+//employee.regWork = registration
+//val startTime = Calendar.getInstance.get(Calendar.HOUR_OF_DAY)
+////if (Calendar.getInstance.get(Calendar.HOUR_OF_DAY) == startTime * vehicle.faults) {
+////vehicle.faults = 0
+//employee.active = false
+//employee.regWork = ""

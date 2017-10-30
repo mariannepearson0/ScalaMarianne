@@ -1,6 +1,7 @@
 package Garage
 
-abstract class Vehicle {
+abstract class Vehicle{
   val regNo:String
-  var faults:Map[String,Int]
+  val parts:Array[Part]
+  val timeToFix:Int
 }
