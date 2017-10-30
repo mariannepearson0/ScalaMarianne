@@ -3,7 +3,7 @@ package Garage
 import java.util.Calendar
 import scala.util.control.Breaks._
 
-class Garage {
+case class Garage {
 
     var employeeList = scala.collection.mutable.ListBuffer.empty[Employee]
     var customerMap = scala.collection.mutable.Map.empty[Customer,Vehicle]
@@ -42,7 +42,7 @@ class Garage {
     def fixVehicle(registration:String) = {
       val allVehicles = customerMap.values
       for(vehicle <- allVehicles) {
-        registration match {
+        registration.toUpperCase match {
           case vehicle.regNo => {
             val cust = keyForValue(vehicle).name
             println(s"The vehicle for $cust is being fixed.")
@@ -73,7 +73,7 @@ class Garage {
       var bill = 0
       val allVehicles = customerMap.values
       for(vehicle <- allVehicles) {
-        registration match {
+        registration.toUpperCase match {
           case vehicle.regNo => {
             val cust = keyForValue(vehicle).name
             if()
