@@ -25,9 +25,9 @@ case class Garage {
       for(vehicle <- allVehicles) {
         registration match {
           case vehicle.regNo => {
-            val cust = keyForValue(vehicle).name
+            val custName = keyForValue(vehicle).name
             customerMap.remove(keyForValue(vehicle))
-            println(s"The vehicle for $cust has been removed from the garage")
+            println(s"The vehicle for $custName has been removed from the garage")
           }
           case _ => "Vehicle is not in garage"
         }
@@ -51,22 +51,21 @@ case class Garage {
                 employee.active = true
                 employee.regWork = registration
                 val startTime = Calendar.getInstance.get(Calendar.HOUR_OF_DAY)
-                //if(Calendar.getInstance.get(Calendar.HOUR_OF_DAY) == startTime*vehicle.faults){
-                // vehicle.faults = 0
+                //if (Calendar.getInstance.get(Calendar.HOUR_OF_DAY) == startTime * vehicle.faults) {
+                //vehicle.faults = 0
                 println(s"The vehicle is fixed")
                 employee.active = false
                 employee.regWork = ""
               }
-
               else println("No employees are available")
               break
             }
           }
-
-
-          case _ => "Vehicle is not in garage"
         }
-      }
+
+          //case _ => "Vehicle is not in garage"
+        }
+
     }
 
     def calculateBill(registration:String) = {
@@ -75,10 +74,9 @@ case class Garage {
       for(vehicle <- allVehicles) {
         registration.toUpperCase match {
           case vehicle.regNo => {
-            val cust = keyForValue(vehicle).name
-            if()
+            val custName = keyForValue(vehicle).name
             bill = vehicle.faults * 20
-            println(s"The bill for $cust comes to £$bill")
+            println(s"The bill for $custName comes to £$bill")
           }
           case _ => "Vehicle is not in garage"
         }
