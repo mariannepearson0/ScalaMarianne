@@ -1,5 +1,3 @@
-//LUMBERJACK
-import Garage.{Customer, Vehicle}
 
 import scala.util.control.Breaks._
 val size = 3
@@ -30,24 +28,6 @@ def placeLogs(logno:Int = 7) = {
   }
 
 }
-
-placeLogs()
-for(arr <- layout) println(arr.mkString)
-
-////TETRAHEDRAL NUMBERS
-//def tetrahedral(n:Int):Int = {
-//  (n * (n+1) * (n+2)) /6
-//}
-//
-//println(tetrahedral(5))
-//
-//def isATetrahedral(number:Int, counter:Int=1):Any = {
-//  if (tetrahedral(counter) == number) s"Yes! $counter"
-//  else if (tetrahedral(counter) < number) isATetrahedral(counter+1)
-//  else if (tetrahedral(counter) > number) "NONE"
-//}
-//
-//println(isATetrahedral(35,1))
 
 //MORSE CODE
 val morseMap = Map("a"->"._", "b"->"_...", "c"->"_._.",

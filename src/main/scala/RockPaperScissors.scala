@@ -15,12 +15,10 @@ class RockPaperScissors {
   def play = {
     val comp = computerTurn
     println(s"Computer chooses $comp")
-    if(comp.equals(userInput)) println("It's a draw!")
-    if(comp.equals("rock") && userInput.equals("paper")) println("You win! Paper beats Rock")
-    if(comp.equals("paper") && userInput.equals("scissors")) println("You win! Scissors beats Paper")
-    if(comp.equals("scissors") && userInput.equals("rock")) println("You win! Rock beats Scissors")
-    if(comp.equals("rock") && userInput.equals("scissors")) println("You lose! Rock beats Scissors")
-    if(comp.equals("paper") && userInput.equals("rock")) println("You lose! Paper beats Rock")
-    if(comp.equals("scissors") && userInput.equals("paper")) println("You lose! Scissors beats Paper")
+    (comp, userInput) match {
+      case (_,_) if comp == userInput => println("It's a draw")
+      case ("rock", "paper") | ("paper", "scissors") | ("scissors", "rock") => println("You win!")
+      case ("rock", "scissors") | ("paper", "rock") | ("scissors", "paper") => println("You lose!")
+    }
   }
 }
