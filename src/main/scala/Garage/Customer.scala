@@ -1,8 +1,12 @@
 package Garage
 
-class Customer(name:String, age:Int, address:String, dateOfIssue:String) extends Person(name, age, address) {
+case class Customer(customerName:String, customerAge:Int, customerAddress:String, dateOfIssue:String) extends Person {
 
-  override def toString = {
-    s"The persons name is $name, their age is $age, their address is $address the date the car came into the garage is $dateOfIssue"
+  def name: String = customerName
+  def age: Int = customerAge
+  def address: String = customerAddress
+
+  override def toString :String = {
+    s"Name:$name\nAge: $age\nAddress: $address\nDate of Issue: $dateOfIssue"
   }
 }
