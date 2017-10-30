@@ -71,7 +71,6 @@ class Garage {
         registration match {
           case vehicle.regNo => {
             val custName = keyForValue(vehicle).name
-            println(s"Time to fix: ${vehicle.timeToFix}")
             bill = vehicle.timeToFix * 20
             println(f"The bill for $custName comes to £$bill%2.2f")
           }
@@ -97,12 +96,3 @@ class Garage {
       garageIsOpen = false
     }
 }
-//for (employee <- employeeList) {
-//if (employee.active == false) {
-//employee.active = true
-//employee.regWork = registration
-//val startTime = Calendar.getInstance.get(Calendar.HOUR_OF_DAY)
-////if (Calendar.getInstance.get(Calendar.HOUR_OF_DAY) == startTime * vehicle.faults) {
-////vehicle.faults = 0
-//employee.active = false
-//employee.regWork = ""
