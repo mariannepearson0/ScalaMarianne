@@ -8,9 +8,8 @@ class Hangman {
 
   def playHangman = {
     println("***WELCOME TO HANGMAN***")
-    val selectedWord = listOfWords(random.nextInt(listOfWords.length))
-    val wordArray = selectedWord.toCharArray
-    val guessArray = Array.fill(selectedWord.length)("_ ")
+    val selectedWordArray = listOfWords(random.nextInt(listOfWords.length)).toCharArray
+    val guessArray = Array.fill(selectedWordArray.length)("_ ")
     val guessedLetters = scala.collection.mutable.Set[String]()
     var lives = 12
     print(guessArray.mkString)
@@ -20,8 +19,8 @@ class Hangman {
       if(guessedLetters.contains(userInput)) println("Letter already guessed")
       guessedLetters += userInput
       val guessStart = guessArray.mkString
-      for (i <- 0 to wordArray.length - 1) {
-        if (wordArray(i).toString.equals(userInput)) guessArray(i) = s"${wordArray(i).toString} "
+      for (i <- 0 to selectedWordArray.length - 1) {
+        if (selectedWordArray(i).toString.equals(userInput)) guessArray(i) = s"${selectedWordArray(i).toString} "
       }
       if(guessArray.mkString == guessStart) lives -= 1
       print(guessArray.mkString)
@@ -31,6 +30,6 @@ class Hangman {
         System.exit(0)
       }
     }
-    println(s"You are a loser!\nThe word was $selectedWord")
+    println(s"You are a loser!\nThe word was ${selectedWordArray.mkString}")
   }
 }

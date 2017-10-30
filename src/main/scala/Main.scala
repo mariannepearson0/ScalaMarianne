@@ -8,6 +8,6 @@ object Main extends App {
   //lumber.placeLogs()
   //val tetra = new Tetrahedral
   //println(tetra.isATetrahedral(14190))
-  val rps = new RockPaperScissors
-  rps.play
+  //val rps = new RockPaperScissors
+  //rps.play
 }

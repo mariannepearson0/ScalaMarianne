@@ -25,9 +25,9 @@ class Garage {
       for(vehicle <- allVehicles) {
         registration match {
           case vehicle.regNo => {
-            val cust = keyForValue(vehicle).name
+            val custName = keyForValue(vehicle).name
             customerMap.remove(keyForValue(vehicle))
-            println(s"The vehicle for $cust has been removed from the garage")
+            println(s"The vehicle for $custName has been removed from the garage")
           }
           case _ => "Vehicle is not in garage"
         }
@@ -74,9 +74,9 @@ class Garage {
       for(vehicle <- allVehicles) {
         registration match {
           case vehicle.regNo => {
-            val cust = keyForValue(vehicle).name
-            //bill = vehicle.faults * 20
-            println(s"The bill for $cust comes to £$bill")
+            val custName = keyForValue(vehicle).name
+            bill = vehicle.faults * 20
+            println(s"The bill for $custName comes to £$bill")
           }
           case _ => "Vehicle is not in garage"
         }
