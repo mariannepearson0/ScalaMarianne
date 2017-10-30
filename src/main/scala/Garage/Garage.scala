@@ -1,8 +1,5 @@
 package Garage
 
-import java.util.Calendar
-import scala.util.control.Breaks._
-
 class Garage {
 
     var employeeList = scala.collection.mutable.ListBuffer.empty[Employee]
@@ -41,7 +38,7 @@ class Garage {
 
     def fixVehicle(registration:String) = {
       val allVehicles = customerMap.values
-      var timeToFix = 0
+      var timeToFix:Double = 0
       for (vehicle <- allVehicles) {
         registration match {
           case vehicle.regNo => {
@@ -62,19 +59,21 @@ class Garage {
           }
           case _ => "Vehicle is not in garage"
         }
+        vehicle.timeToFix = timeToFix
       }
       println(s"Time to fix vehicle: $timeToFix")
     }
 
     def calculateBill(registration:String) = {
-      var bill = 0
+      var bill:Double = 0
       val allVehicles = customerMap.values
       for(vehicle <- allVehicles) {
         registration match {
           case vehicle.regNo => {
             val custName = keyForValue(vehicle).name
-            //bill = vehicle.faults * 20
-            println(s"The bill for $custName comes to £$bill")
+            println(s"Time to fix: ${vehicle.timeToFix}")
+            bill = vehicle.timeToFix * 20
+            println(f"The bill for $custName comes to £$bill%2.2f")
           }
           case _ => "Vehicle is not in garage"
         }

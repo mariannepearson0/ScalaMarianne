@@ -17,8 +17,7 @@ object GarageMain extends App {
   myGarage.addVehicle(Jerry, JerryCar)
   myGarage.addVehicle(Harrison, HarrisonCar)
   myGarage.addVehicle(Penelope, PenelopeCar)
-  //myGarage.fixVehicle("HY562HH")
-
+  myGarage.fixVehicle("HY562HH")
 
   myGarage.outputContents()
   myGarage.removeVehicle("XF567JU")
