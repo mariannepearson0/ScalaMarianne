@@ -2,7 +2,9 @@
 class Day3 extends Output {
 
   //FUNCTIONAL 1
-  java.util.TimeZone.getAvailableIDs().map(_.split('/').toList.drop(1).mkString).filter(_.length>1)
+  def getCapitalsList: Array[String] = {
+    java.util.TimeZone.getAvailableIDs().map(_.split('/').toList.drop(1).mkString).filter(_.length > 1)
+  }
 
   //FUNCTIONAL 2
   def fibonacci(intList: List[Int]):Boolean = {

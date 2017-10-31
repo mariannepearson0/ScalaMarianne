@@ -2,6 +2,10 @@ class Day3_testing extends Base {
 
   val day3 = new Day3
 
+  "getCapitalsList function" should "return a list of all capitals from java's get TimeZone Ids" in {
+    day3.getCapitalsList should contain inOrder ("Lusaka", "Malabo", "Maputo", "Maseru", "Mbabane")
+  }
+
   "fibonnacci function" should "take a list of numbers and determine if they are a fibonnacci sequence" in {
     day3.fibonacci(List(1,1,2,3,5,8)) should equal (true)
     day3.fibonacci(List(33,5,2,78,3)) should equal (false)
