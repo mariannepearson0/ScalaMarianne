@@ -36,6 +36,8 @@ class Garage {
       println(s"New employee ${newEmployee.name} has been added.")
     }
 
+
+
     def fixVehicle(registration:String) = {
       val allVehicles = customerMap.values
       var timeToFix:Double = 0
@@ -44,22 +46,11 @@ class Garage {
           case vehicle.regNo => {
             val cust = keyForValue(vehicle).name
             println(s"The vehicle for $cust is being fixed.")
-            for (part <- vehicle.parts if (part.broken == true)) {
-              part.partType match {
-                case "tyre" => timeToFix += 0.5
-                case "windscreen" => timeToFix += 0.75
-                case "bumper" => timeToFix += 0.25
-                case "boot" => timeToFix += 1
-                case "windscreen wipers" => timeToFix += 0.4
-                case "engine" => timeToFix += 3
-                case "flux capacitor" => timeToFix += 10
-                case _ => 0
-              }
-            }
+            timeToFix = vehicle.timeToFix
           }
           case _ => "Vehicle is not in garage"
         }
-        vehicle.timeToFix = timeToFix
+        timeToFix
       }
       println(s"Time to fix vehicle: $timeToFix")
     }

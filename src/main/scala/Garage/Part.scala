@@ -19,4 +19,19 @@ case class Part(broken:Boolean, partType:String) {
     }
     partArray
   }
+
+  def timeToFix(partType:String): Double = {
+    var timeToFix:Double = 0
+    partType match {
+      case "tyre" => timeToFix += 0.5
+      case "windscreen" => timeToFix += 0.75
+      case "bumper" => timeToFix += 0.25
+      case "boot" => timeToFix += 1
+      case "windscreen wipers" => timeToFix += 0.4
+      case "engine" => timeToFix += 3
+      case "flux capacitor" => timeToFix += 10
+      case _ => 0
+    }
+    timeToFix
+  }
 }
