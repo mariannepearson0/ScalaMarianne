@@ -1,10 +1,9 @@
-class ChatBot {
+class ChatBot extends Output {
 
   var open = true
   var angryCount = 0
 
   def playChatBot = {
-
     while (open == true) {
       val userInput = scala.io.StdIn.readLine()
       if (userInput.endsWith("?")) {
