@@ -4,7 +4,6 @@ class Tetrahedral {
     (n * (n+1) * (n+2)) /6
   }
 
-  //Does work, but your suggested input was unusually mean for you
   def isATetrahedral(number:Int, counter:Int=1):Any = {
     if (tetrahedral(counter) == number) s"Yes! $counter"
     else if (tetrahedral(counter) < number) isATetrahedral(number, counter+1)
