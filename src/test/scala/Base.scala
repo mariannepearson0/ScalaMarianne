@@ -1,7 +1,3 @@
-import org.scalatest.FlatSpec
+import org.scalatest._
 
-abstract class Base extends FlatSpec {
-
-
-
-}
+abstract class Base extends FlatSpec with Matchers with Inside with Inspectors with OptionValues
