@@ -1,4 +1,4 @@
-object Day2 {
+class Day2 {
 
   //PATTERN MATCHING 1
   def booleanMathPattern(int1:Int, int2:Int, bool:Boolean) = {
@@ -7,8 +7,6 @@ object Day2 {
       case (_) => int1*int2
     }
   }
-
-  booleanMathPattern(5,7,false)
 
   //PATTERN MATCHING 1
   def whatIfZeroPattern(int1:Int, int2:Int) = {

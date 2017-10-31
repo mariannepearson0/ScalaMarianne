@@ -1,6 +1,8 @@
 
 class Day1_testing extends Base {
 
+  val Day1 = new Day1
+
   "multiplyString function" should "multiply input string by 3" in {
     assert(Day1.multiplyString("hello",3) == "hellohellohello")
   }
@@ -58,31 +60,31 @@ class Day1_testing extends Base {
   }
 
   "multiplePrint function" should "show that the message is printed" in {
-    val loops = new Day1Class with MockOutput
+    val loops = new Day1 with MockOutput
     loops.multiplePrint("cat",3)
     loops.messages.mkString should equal ("catcatcat")
   }
 
   "rectangleString function" should "create a rectangle out of the given string" in {
-    val loops = new Day1Class with MockOutput
+    val loops = new Day1 with MockOutput
     loops.rectangleString("H", 2)
     loops.messages should equal(List("HH","HH"))
   }
 
   "rectangleRecursive function" should "give the same result as rectangleString" in {
-    val loops = new Day1Class with MockOutput
+    val loops = new Day1 with MockOutput
     loops.rectangleRec("H", 2,2)
     loops.messages should equal(List("HH", "HH"))
   }
 
   "fizzbuzz function" should "give the correct output for the fizzbuzz game" in {
-    val loops = new Day1Class with MockOutput
+    val loops = new Day1 with MockOutput
     loops.fizzBuzz("fizz", "buzz", 15)
     loops.messages.mkString should equal("12fizz4buzzfizz78fizzbuzz11fizz1314fizzbuzz")
   }
 
   "fizzbuzzrec function" should "again give the correct output for the fizzbuzz game" in {
-    val loops = new Day1Class with MockOutput
+    val loops = new Day1 with MockOutput
     loops.fizzBuzzRec("fizz", "buzz", 15)
     loops.messages.mkString should equal("12fizz4buzzfizz78fizzbuzz11fizz1314fizzbuzz")
   }
@@ -91,6 +93,4 @@ class Day1_testing extends Base {
     var messages: Seq[String] = Seq()
     override def print(s: String) = messages = messages :+ s
   }
-
-
 }

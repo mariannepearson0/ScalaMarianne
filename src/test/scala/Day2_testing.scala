@@ -1,5 +1,7 @@
 class Day2_testing extends Base {
 
+  val Day2 = new Day2
+
   "booleanMathPattern function" should "alter equation when boolean is changed" in {
     Day2.booleanMathPattern(5,12,true) should equal (17)
     Day2.booleanMathPattern(5,12,false) should equal (60)
@@ -38,5 +40,7 @@ class Day2_testing extends Base {
   "biggestFruit function" should "return the biggest fruit from a list of fruit strings" in {
     Day2.biggestFruit should equal ("Strawberry")
   }
+
+
 
 }
