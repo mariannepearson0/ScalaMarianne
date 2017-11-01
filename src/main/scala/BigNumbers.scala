@@ -1,14 +1,14 @@
 class BigNumbers {
 
-  def bigNumberConverter(number:String) = {
+  def bigNumberConverter(num:BigInt) = {
+    val number = num.toString
+    val startNumber = number.substring(0,number.length%3)
     var threesList = scala.collection.mutable.ListBuffer[String]()
-    var startNumber = number.substring(0,number.length%3)
     if(startNumber != "") threesList += startNumber
-    var newNumber = number.substring((number.length%3),number.length)
-    var numArray = newNumber.toCharArray
+    val newNumber = number.substring(number.length%3,number.length)
+    val numArray = newNumber.toCharArray
     for(i <- 0 to numArray.length-3 by 3) {
-      val first = numArray(i).toString + numArray(i + 1).toString + numArray(i + 2).toString
-      threesList += first
+      threesList += numArray(i).toString + numArray(i + 1).toString + numArray(i + 2).toString
     }
     threesList.reverse.toList
   }
