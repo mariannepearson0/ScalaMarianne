@@ -1,6 +1,3 @@
-import java.io.ByteArrayInputStream
-
-import scala.io.StdIn
 
 class ChatBot_Testing extends Base {
 

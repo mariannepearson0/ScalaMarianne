@@ -30,7 +30,4 @@ class MorseCode extends Output {
     morse
   }
 
-  //morseToString(".__ / ___ / _. / _.. / . / ._. / .._. / .._ / ._..")
-  //stringToMorse("princess")
-
 }

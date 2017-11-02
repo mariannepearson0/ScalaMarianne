@@ -9,7 +9,6 @@ class Hangman extends Output {
   def userInput = {
     while (lives > 0) {
       val userInput = scala.io.StdIn.readLine
-      //playHangman(userInput)
     }
   }
 
