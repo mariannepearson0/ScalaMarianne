@@ -1,5 +1,3 @@
-import scala.util.control.Breaks.break
-
 class Lumberjack extends Output {
 
   val size = 3
@@ -24,12 +22,11 @@ class Lumberjack extends Output {
             arr(i) += 1
             logNumber -= 1
           }
-          if (logNumber == 0){
+          if (logNumber == 0) {
             for (arr <- layout) print(arr.mkString)
-            System.exit(0)
           }
         }
       }
-      placeLogs(logNumber)
+      if(logNumber>0) placeLogs(logNumber)
   }
 }

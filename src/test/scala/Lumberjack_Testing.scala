@@ -6,10 +6,10 @@ class Lumberjack_Testing extends Base{
     lumberjack.findLowest() should equal (1)
   }
 
-  //Test is failing to start
   "placeLogs method" should "place the logs" in {
     val loops = new Lumberjack with MockOutput
     loops.placeLogs()
+    loops.messages should equal (List("322", "223", "242"))
     println(loops.messages)
   }
 
