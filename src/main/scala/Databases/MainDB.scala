@@ -47,7 +47,7 @@ object MainDB extends App {
       db.run(query)
     }
       Await.result(insertPeople, Duration.Inf).andThen {
-        case Success(_) => searchPeople
+        case Success(_) => countPeople
         case Failure(error) => println("Welp! Something went wrong! " + error.getMessage)}
   }
 
@@ -100,6 +100,9 @@ object MainDB extends App {
     val count = Future {
       db.run(peopleTable.length.result)
     }
+    Await.result(count, Duration.Inf).andThen {
+      case Success(a) => println(s"Length: $a people")
+      case Failure(error) => println("Count people failed due to: " + error.getMessage)}
   }
 
   dropDB
