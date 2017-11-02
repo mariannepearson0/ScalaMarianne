@@ -45,7 +45,7 @@ object MainDB extends App {
       db.run(query)
     }
       Await.result(insertPeople, Duration.Inf).andThen {
-        case Success(_) => deletePeople
+        case Success(_) => searchPeople
         case Failure(error) => println("Welp! Something went wrong! " + error.getMessage)}
   }
 
@@ -85,11 +85,13 @@ object MainDB extends App {
 
   def searchPeople = {
     val search = Future {
-      db.run(peopleTable.result).map(_.foreach {
+      db.run(peopleTable.filter(_.lName === "Brown").result).map(_.foreach {
         case (id, fName, lName, age) => println(s" $id $fName $lName $age")
-      //peopleTable.filter(_.lName === "Brown")
     })
     }
+    Await.result(search, Duration.Inf).andThen {
+      case Success(_) =>  db.close()  //cleanup DB connection
+      case Failure(error) => println("Listing people failed due to: " + error.getMessage)}
   }
 
   dropDB
