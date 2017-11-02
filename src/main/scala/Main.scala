@@ -1,9 +1,6 @@
 object Main extends App {
 
-    val lumber = new Lumberjack
-    lumber.placeLogs()
-
-  val hang2 = new Hangman2
-  hang2.userInput
+  val big = new BigNumbers
+  big.makeSomeWords(big.bigNumberConverter(2342354536L))
 
 }

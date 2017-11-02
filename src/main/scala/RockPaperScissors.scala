@@ -1,8 +1,5 @@
 class RockPaperScissors {
 
-  //println("Enter choice...")
-  //val userInput = scala.io.StdIn.readLine().toLowerCase
-
   def computerTurn: String = {
     scala.util.Random.nextInt(3) match {
       case 0 => "rock"
@@ -12,7 +9,6 @@ class RockPaperScissors {
   }
 
   def play(in:String, comp:String) = {
-    //val comp = computerTurn
     println(s"Computer chooses $comp")
     (comp, in) match {
       case (_,_) if comp == in => "It's a draw"

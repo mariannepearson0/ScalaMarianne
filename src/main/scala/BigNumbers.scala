@@ -13,31 +13,29 @@ class BigNumbers {
     threesList.reverse.toList
   }
 
-  def makeSomeWords(bigNumberList: List[String]): String = {
-    var shortScaleString = ""
-    var longScaleString = ""
+  def makeSomeWords(bigNumberList: List[String], counter:Int = 0):Any = {
+    if(counter == 0) print("Short Scale: ")
+    else if(counter == 1) print("Long Scale: ")
+    else System.exit(0)
     for(i <- bigNumberList.length-1 to 0 by -1) {
       i match {
-        case 0 => {shortScaleString += s"${bigNumberList(i)}"
-          longScaleString += s"${bigNumberList(i)}"}
-        case 1 => {shortScaleString += s"${bigNumberList(i)} thousand, "
-          longScaleString += s"${bigNumberList(i)} thousand, "}
-        case 2 => {shortScaleString += s"${bigNumberList(i)} million, "
-          longScaleString += s"${bigNumberList(i)} million, "}
-        case 3 => {shortScaleString += s"${bigNumberList(i)} billion, "
-          longScaleString += s"${bigNumberList(i)} milliard, "}
-        case 4 => {shortScaleString += s"${bigNumberList(i)} trillion, "
-          longScaleString += s"${bigNumberList(i)} billion, "}
-        case 5 => {shortScaleString += s"${bigNumberList(i)} quadrillion, "
-          longScaleString += s"${bigNumberList(i)} billiard, "}
-        case 6 => {shortScaleString += s"${bigNumberList(i)} quintillion, "
-          longScaleString += s"${bigNumberList(i)} trillion, "}
-        case 7 => {shortScaleString += s"${bigNumberList(i)} sextillion, "
-          longScaleString += s"${bigNumberList(i)} trilliard, "}
+        case 0 => println(s"${bigNumberList(i)}")
+        case 1 => print(s"${bigNumberList(i)} thousand, ")
+        case 2 => print(s"${bigNumberList(i)} million, ")
+        case 3 if counter == 0 => print(s"${bigNumberList(i)} billion, ")
+        case 3 if counter == 1 => print(s"${bigNumberList(i)} milliard, ")
+        case 4 if counter == 0 => print(s"${bigNumberList(i)} trillion, ")
+        case 4 if counter == 1 => print(s"${bigNumberList(i)} billion, ")
+        case 5 if counter == 0 => print(s"${bigNumberList(i)} quadrillion, ")
+        case 5 if counter == 1 => print(s"${bigNumberList(i)} billiard, ")
+        case 6 if counter == 0 => print(s"${bigNumberList(i)} quintillion, ")
+        case 6 if counter == 1 => print(s"${bigNumberList(i)} trillion, ")
+        case 7 if counter == 0 => print(s"${bigNumberList(i)} sextillion, ")
+        case 7 if counter == 1 => print(s"${bigNumberList(i)} trilliard, ")
         case _ => "none"
       }
     }
-    s"Short Scale: $shortScaleString\nLong Scale: $longScaleString"
+    makeSomeWords(bigNumberList, counter+1)
   }
 }
 
