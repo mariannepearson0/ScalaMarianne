@@ -39,7 +39,9 @@ object MainDB extends App {
     val insertPeople = Future {
       val query = peopleTable ++= Seq(
         (10, "Jack", "Wood", 36),
-        (20, "Tim", "Brown", 24))
+        (20, "Tim", "Brown", 24),
+        (30, "Jennie", "Simpson", 42),
+        (40, "Ramona", "Chatbot", 73))
       // insert into `PEOPLE` (`PER_FNAME`,`PER_LNAME`,`PER_AGE`)  values (?,?,?)
       println(query.statements.head) // would print out the query one line up
       db.run(query)
@@ -94,12 +96,12 @@ object MainDB extends App {
       case Failure(error) => println("Listing people failed due to: " + error.getMessage)}
   }
 
+  def countPeople = {
+    val count = Future {
+      db.run(peopleTable.length.result)
+    }
+  }
+
   dropDB
-//  initialisePeople
-//  Thread.sleep(100)
-//  deletePeople
-//  Thread.sleep(100)
-//  updatePeople
-//  Thread.sleep(100)
-//  listPeople
+
 }
