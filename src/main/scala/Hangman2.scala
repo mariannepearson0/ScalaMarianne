@@ -12,7 +12,7 @@ class Hangman2 {
 
   def userInput = {
     while (lives >= 0) {
-      if(lives == 0) println(s"You are a loser!\nThe word was ${selectedWordArray.mkString}")
+      if (lives == 0) println(s"You are a loser!\nThe word was ${selectedWordArray.mkString}")
       println("Take a guess: ")
       print(guessArray.mkString)
       val userInput = scala.io.StdIn.readLine
@@ -20,22 +20,19 @@ class Hangman2 {
     }
   }
 
-  def playHangman(in:String) =
-      if (guessedLetters.contains(in)) println("Letter already guessed")
-      guessedLetters += in
-      val guessStart = guessArray.mkString
-      for (i <- 0 to selectedWordArray.length - 1) {
-        if (selectedWordArray(i).toString.equals(in)) guessArray(i) = s"${selectedWordArray(i).toString} "
-      }
-      if (guessArray.mkString == guessStart) lives -= 1
-      print(guessArray.mkString)
-      println(s"lives: $lives")
-      if (!guessArray.contains("_ ")) {
-        println("You are a winner!")
-        System.exit(0)
-      }
-
+  def playHangman(in: String) = {
+    if (guessedLetters.contains(in)) println("Letter already guessed")
+    guessedLetters += in
+    val guessStart = guessArray.mkString
+    for (i <- 0 to selectedWordArray.length - 1) {
+      if (selectedWordArray(i).toString.equals(in)) guessArray(i) = s"${selectedWordArray(i).toString} "
     }
-
-
+    if (guessArray.mkString == guessStart) lives -= 1
+    print(guessArray.mkString)
+    println(s"lives: $lives")
+    if (!guessArray.contains("_ ")) {
+      println("You are a winner!")
+      System.exit(0)
+    }
+  }
 }
