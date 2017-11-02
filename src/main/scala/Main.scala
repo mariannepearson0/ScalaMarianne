@@ -1,5 +1,7 @@
 object Main extends App {
 
+    val lumber = new Lumberjack
+    lumber.placeLogs()
   //val big = new BigNumbers
   //println(big.makeSomeWords(big.bigNumberConverter(980767676L)))
 
