@@ -46,7 +46,7 @@ class Garage {
           case vehicle.regNo => {
             val cust = keyForValue(vehicle).name
             println(s"The vehicle for $cust is being fixed.")
-            timeToFix = vehicle.timeToFix
+            //timeToFix = vehicle.timeToFix
           }
           case _ => "Vehicle is not in garage"
         }
@@ -62,7 +62,7 @@ class Garage {
         registration match {
           case vehicle.regNo => {
             val custName = keyForValue(vehicle).name
-            bill = vehicle.timeToFix * 20
+            //bill = vehicle.timeToFix * 20
             println(f"The bill for $custName comes to £$bill%2.2f")
           }
           case _ => "Vehicle is not in garage"

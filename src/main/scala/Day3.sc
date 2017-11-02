@@ -34,7 +34,7 @@ def cipher(input:String) = {
   for(letter <- input.toCharArray) print(alphabetArray(alphabetArray.length - alphabetArray.indexOf(letter)-1))
 }
 
-cipher("foobar")
+cipher("cat")
 
 //FUNCTIONAL 3
 def gcd(int1:Int, int2:Int): Integer = if(int2 == 0) int1 else gcd(int2, int1%int2)
@@ -72,8 +72,10 @@ isInString2((str1:String,str2:String) => if(str2.contains(str1)) s"Yes indeed, $
 
 //FUNCTIONAL 8
 def applyDiscounts(amount:Double): Double = {
-  if(amount > 100) amount*0.9
-  else amount*0.8
+  var total = amount
+  if(amount > 100) total = total*0.9
+  total = total + total*0.2
+  total
 }
 applyDiscounts(150)
 
