@@ -1,9 +1,6 @@
 package Garage
 
-import java.util.Calendar
-import scala.util.control.Breaks._
-
-case class Garage {
+class Garage {
 
     var employeeList = scala.collection.mutable.ListBuffer.empty[Employee]
     var customerMap = scala.collection.mutable.Map.empty[Customer,Vehicle]
@@ -39,44 +36,34 @@ case class Garage {
       println(s"New employee ${newEmployee.name} has been added.")
     }
 
+
+
     def fixVehicle(registration:String) = {
       val allVehicles = customerMap.values
-      for(vehicle <- allVehicles) {
-        registration.toUpperCase match {
+      var timeToFix:Double = 0
+      for (vehicle <- allVehicles) {
+        registration match {
           case vehicle.regNo => {
             val cust = keyForValue(vehicle).name
             println(s"The vehicle for $cust is being fixed.")
-            for (employee <- employeeList) {
-              if (employee.active == false) {
-                employee.active = true
-                employee.regWork = registration
-                val startTime = Calendar.getInstance.get(Calendar.HOUR_OF_DAY)
-                //if (Calendar.getInstance.get(Calendar.HOUR_OF_DAY) == startTime * vehicle.faults) {
-                //vehicle.faults = 0
-                println(s"The vehicle is fixed")
-                employee.active = false
-                employee.regWork = ""
-              }
-              else println("No employees are available")
-              break
-            }
+            timeToFix = vehicle.timeToFix
           }
+          case _ => "Vehicle is not in garage"
         }
-
-          //case _ => "Vehicle is not in garage"
-        }
-
+        timeToFix
+      }
+      println(s"Time to fix vehicle: $timeToFix")
     }
 
     def calculateBill(registration:String) = {
-      var bill = 0
+      var bill:Double = 0
       val allVehicles = customerMap.values
       for(vehicle <- allVehicles) {
-        registration.toUpperCase match {
+        registration match {
           case vehicle.regNo => {
             val custName = keyForValue(vehicle).name
-            bill = vehicle.faults * 20
-            println(s"The bill for $custName comes to £$bill")
+            bill = vehicle.timeToFix * 20
+            println(f"The bill for $custName comes to £$bill%2.2f")
           }
           case _ => "Vehicle is not in garage"
         }
