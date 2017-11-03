@@ -40,14 +40,16 @@ object MainDB extends App {
       val query = peopleTable ++= Seq(
         (10, "Jack", "Wood", 36),
         (20, "Tim", "Brown", 24),
+        (60, "Harry", "Simpson", 18),
+        (40, "Ramona", "Chatbot", 73),
         (30, "Jennie", "Simpson", 42),
-        (40, "Ramona", "Chatbot", 73))
+        (50, "Tim", "Williams", 39))
       // insert into `PEOPLE` (`PER_FNAME`,`PER_LNAME`,`PER_AGE`)  values (?,?,?)
       println(query.statements.head) // would print out the query one line up
       db.run(query)
     }
       Await.result(insertPeople, Duration.Inf).andThen {
-        case Success(_) => countPeople
+        case Success(_) => commonSurname
         case Failure(error) => println("Welp! Something went wrong! " + error.getMessage)}
   }
 
@@ -103,6 +105,34 @@ object MainDB extends App {
     Await.result(count, Duration.Inf).andThen {
       case Success(a) => println(s"Length: $a people")
       case Failure(error) => println("Count people failed due to: " + error.getMessage)}
+  }
+
+  def averageAge = {
+    val avAge = Future {
+      db.run(peopleTable.map(_.age).avg.result)
+      }
+    Await.result(avAge, Duration.Inf).andThen {
+      case Success(a) => println(s"Average age: $a")
+      case Failure(error) => println("Average age failed due to: " + error.getMessage)}
+  }
+
+  def commonName = {
+    val comName = Future {
+      db.run(peopleTable.map(_.fName).max.result)
+    }
+    Await.result(comName, Duration.Inf).andThen {
+      case Success(a) => println(s"Most common name: $a")
+      case Failure(error) => println("Common name failed due to: " + error.getMessage)}
+  }
+
+  def commonSurname = {
+    val comSur = Future {
+      val nameGroups = peopleTable.groupBy(_.lName)
+      db.run(peopleTable.result)
+    }
+    Await.result(comSur, Duration.Inf).andThen {
+      case Success(a) => println(s"Most common surname: $a")
+      case Failure(error) => println("Common surname failed due to: " + error.getMessage)}
   }
 
   dropDB
